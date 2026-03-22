@@ -1,11 +1,1711 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>PakePlus</title>
-    </head>
-    <body>
-        Hello World
-    </body>
+<head>
+  <meta charset="UTF-8" />
+  <title>DM-XTech | Private Distributor Briefing Deck</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg-main: #050814;
+      --bg-alt: #070b1c;
+      --bg-card: #0c1226;
+      --accent: #3cf2c8;
+      --accent-soft: rgba(60, 242, 200, 0.12);
+      --accent-strong: #4df7d0;
+      --accent-warm: #ffb347;
+      --text-main: #f5f7ff;
+      --text-muted: #9aa3c7;
+      --border-subtle: #1b2340;
+      --danger: #ff5c7a;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.65);
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+      --max-width: 1120px;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      background: radial-gradient(circle at top, #101633 0, #050814 52%, #02030a 100%);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-shell {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(5, 8, 20, 0.96), rgba(5, 8, 20, 0.82), transparent);
+      border-bottom: 1px solid rgba(60, 242, 200, 0.08);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 14px 20px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 20% 0, #3cf2c8, #0c1226 55%, #050814 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 1px rgba(60, 242, 200, 0.35), 0 0 32px rgba(60, 242, 200, 0.35);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #050814;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-title {
+      font-size: 15px;
+      font-weight: 650;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-main);
+    }
+
+    .brand-subtitle {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+    }
+
+    .nav-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-pill {
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(154, 163, 199, 0.4);
+      padding: 4px 10px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: radial-gradient(circle at top left, rgba(60, 242, 200, 0.18), rgba(5, 8, 20, 0.9));
+    }
+
+    .nav-pill span.dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(60, 242, 200, 0.9);
+    }
+
+    .nav-pill--danger {
+      border-color: rgba(255, 92, 122, 0.5);
+      color: #ffb8c6;
+      background: radial-gradient(circle at top left, rgba(255, 92, 122, 0.2), rgba(5, 8, 20, 0.9));
+    }
+
+    .nav-pill--danger span.dot {
+      background: var(--danger);
+      box-shadow: 0 0 10px rgba(255, 92, 122, 0.9);
+    }
+
+    .nav-pill--accent {
+      border-color: rgba(60, 242, 200, 0.7);
+      color: var(--accent-strong);
+      background: radial-gradient(circle at top left, rgba(60, 242, 200, 0.24), rgba(5, 8, 20, 0.9));
+    }
+
+    .nav-pill--accent span.dot {
+      background: var(--accent-strong);
+      box-shadow: 0 0 10px rgba(60, 242, 200, 0.9);
+    }
+
+    .content {
+      flex: 1;
+    }
+
+    .deck-shell {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .slide {
+      border-radius: 26px;
+      background: radial-gradient(circle at top left, rgba(60, 242, 200, 0.12), rgba(12, 18, 38, 0.98));
+      border: 1px solid rgba(60, 242, 200, 0.22);
+      box-shadow: var(--shadow-soft);
+      padding: 26px 24px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide--alt {
+      background: radial-gradient(circle at top, rgba(255, 179, 71, 0.08), rgba(7, 11, 28, 0.98));
+      border-color: rgba(255, 179, 71, 0.28);
+    }
+
+    .slide--muted {
+      background: radial-gradient(circle at top, rgba(154, 163, 199, 0.08), rgba(7, 11, 28, 0.98));
+      border-color: rgba(154, 163, 199, 0.28);
+    }
+
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .slide-kicker {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-strong);
+      margin-bottom: 6px;
+    }
+
+    .slide-title {
+      font-size: 26px;
+      line-height: 1.2;
+      font-weight: 650;
+      letter-spacing: 0.02em;
+    }
+
+    .slide-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      max-width: 420px;
+    }
+
+    .slide-tag {
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(154, 163, 199, 0.5);
+      padding: 4px 10px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(5, 8, 20, 0.7);
+    }
+
+    .slide-tag span.badge {
+      border-radius: 999px;
+      padding: 2px 8px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      background: rgba(60, 242, 200, 0.16);
+      color: var(--accent-strong);
+      border: 1px solid rgba(60, 242, 200, 0.5);
+    }
+
+    .slide-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      gap: 22px;
+      align-items: flex-start;
+    }
+
+    .slide-body--single {
+      display: block;
+    }
+
+    .slide-section-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .slide-lead {
+      font-size: 15px;
+      color: var(--text-main);
+      margin-bottom: 10px;
+    }
+
+    .slide-lead strong {
+      font-weight: 650;
+      color: var(--accent-strong);
+    }
+
+    .slide-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+      margin-bottom: 4px;
+    }
+
+    .pill {
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(154, 163, 199, 0.45);
+      padding: 4px 10px;
+      font-size: 11px;
+      color: var(--text-muted);
+      background: rgba(5, 8, 20, 0.7);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pill span.bullet {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(154, 163, 199, 0.9);
+    }
+
+    .pill--accent {
+      border-color: rgba(60, 242, 200, 0.7);
+      color: var(--accent-strong);
+      background: rgba(5, 8, 20, 0.9);
+    }
+
+    .pill--accent span.bullet {
+      background: var(--accent-strong);
+    }
+
+    .pill--warm {
+      border-color: rgba(255, 179, 71, 0.7);
+      color: #ffd9a0;
+      background: rgba(5, 8, 20, 0.9);
+    }
+
+    .pill--warm span.bullet {
+      background: #ffb347;
+    }
+
+    .pill--danger {
+      border-color: rgba(255, 92, 122, 0.7);
+      color: #ffb8c6;
+      background: rgba(5, 8, 20, 0.9);
+    }
+
+    .pill--danger span.bullet {
+      background: var(--danger);
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .metric-card {
+      border-radius: 14px;
+      background: rgba(5, 8, 20, 0.9);
+      border: 1px solid rgba(60, 242, 200, 0.18);
+      padding: 10px 10px 9px;
+    }
+
+    .metric-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .metric-value {
+      font-size: 18px;
+      font-weight: 650;
+      letter-spacing: 0.02em;
+      color: var(--accent-strong);
+      margin-bottom: 2px;
+    }
+
+    .metric-footnote {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .list {
+      list-style: none;
+      margin: 4px 0 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .list-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .list-item-bullet {
+      margin-top: 5px;
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(60, 242, 200, 0.7);
+      flex-shrink: 0;
+    }
+
+    .list-item strong {
+      color: var(--text-main);
+      font-weight: 550;
+    }
+
+    .callout {
+      border-radius: 14px;
+      border: 1px dashed rgba(154, 163, 199, 0.6);
+      background: rgba(5, 8, 20, 0.8);
+      padding: 10px 11px;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 10px;
+    }
+
+    .callout strong {
+      color: var(--accent-strong);
+      font-weight: 600;
+    }
+
+    .callout--accent {
+      border-style: solid;
+      border-color: rgba(60, 242, 200, 0.7);
+      background: radial-gradient(circle at top left, rgba(60, 242, 200, 0.16), rgba(5, 8, 20, 0.9));
+    }
+
+    .callout--danger {
+      border-style: solid;
+      border-color: rgba(255, 92, 122, 0.7);
+      background: radial-gradient(circle at top left, rgba(255, 92, 122, 0.16), rgba(5, 8, 20, 0.9));
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .badge {
+      border-radius: 999px;
+      padding: 3px 9px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      border: 1px solid rgba(154, 163, 199, 0.5);
+      color: var(--text-muted);
+      background: rgba(5, 8, 20, 0.9);
+    }
+
+    .badge--accent {
+      border-color: rgba(60, 242, 200, 0.7);
+      color: var(--accent-strong);
+      background: rgba(5, 8, 20, 0.9);
+    }
+
+    .badge--warm {
+      border-color: rgba(255, 179, 71, 0.7);
+      color: #ffd9a0;
+      background: rgba(5, 8, 20, 0.9);
+    }
+
+    .badge--danger {
+      border-color: rgba(255, 92, 122, 0.7);
+      color: #ffb8c6;
+      background: rgba(5, 8, 20, 0.9);
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .timeline-step {
+      border-radius: 14px;
+      background: rgba(5, 8, 20, 0.9);
+      border: 1px solid rgba(154, 163, 199, 0.4);
+      padding: 10px 10px 9px;
+      position: relative;
+    }
+
+    .timeline-step-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .timeline-step-title {
+      font-size: 13px;
+      font-weight: 550;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .timeline-step-text {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .timeline-step-index {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      font-size: 11px;
+      color: rgba(154, 163, 199, 0.8);
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 6px;
+      font-size: 12px;
+    }
+
+    .table th,
+    .table td {
+      padding: 7px 8px;
+      border-bottom: 1px solid rgba(27, 35, 64, 0.9);
+    }
+
+    .table th {
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: left;
+    }
+
+    .table td {
+      color: var(--text-main);
+    }
+
+    .table td span.muted {
+      color: var(--text-muted);
+      font-size: 11px;
+    }
+
+    .table-row-soft {
+      background: rgba(5, 8, 20, 0.7);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .btn {
+      border-radius: var(--radius-pill);
+      padding: 8px 16px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: default;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #3cf2c8, #4df7d0);
+      color: #050814;
+      box-shadow: 0 0 24px rgba(60, 242, 200, 0.5);
+      font-weight: 650;
+    }
+
+    .btn-outline {
+      background: rgba(5, 8, 20, 0.9);
+      border-color: rgba(154, 163, 199, 0.7);
+      color: var(--text-muted);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: rgba(154, 163, 199, 0.4);
+      color: var(--text-muted);
+    }
+
+    .btn span.dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #050814;
+    }
+
+    .btn-primary span.dot {
+      background: #050814;
+    }
+
+    .btn-outline span.dot,
+    .btn-ghost span.dot {
+      background: var(--accent-strong);
+    }
+
+    .footer {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 20px 32px;
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(27, 35, 64, 0.9);
+      padding-top: 16px;
+    }
+
+    .footer span.label {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .footer span.private {
+      color: #ffb8c6;
+    }
+
+    .slide-index {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: rgba(154, 163, 199, 0.8);
+    }
+
+    .slide-watermark {
+      position: absolute;
+      bottom: -10px;
+      right: 12px;
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: rgba(12, 18, 38, 0.7);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .slide-divider {
+      height: 1px;
+      background: linear-gradient(to right, rgba(27, 35, 64, 0.2), rgba(60, 242, 200, 0.5), rgba(27, 35, 64, 0.2));
+      margin: 10px 0 12px;
+    }
+
+    .hero-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .hero-badge {
+      border-radius: var(--radius-pill);
+      padding: 4px 11px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      border: 1px solid rgba(60, 242, 200, 0.6);
+      color: var(--accent-strong);
+      background: radial-gradient(circle at top left, rgba(60, 242, 200, 0.18), rgba(5, 8, 20, 0.9));
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-badge span.dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent-strong);
+      box-shadow: 0 0 12px rgba(60, 242, 200, 0.9);
+    }
+
+    .hero-title {
+      font-size: clamp(28px, 4vw, 34px);
+      line-height: 1.15;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-top: 14px;
+      margin-bottom: 10px;
+    }
+
+    .hero-title span.highlight {
+      color: var(--accent-strong);
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 520px;
+    }
+
+    .hero-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .hero-meta-card {
+      border-radius: 14px;
+      border: 1px solid rgba(154, 163, 199, 0.5);
+      background: rgba(5, 8, 20, 0.9);
+      padding: 9px 11px;
+      min-width: 160px;
+    }
+
+    .hero-meta-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+    }
+
+    .hero-meta-value {
+      font-size: 13px;
+      color: var(--text-main);
+    }
+
+    .hero-meta-value span.em {
+      color: var(--accent-strong);
+      font-weight: 600;
+    }
+
+    .hero-right {
+      border-radius: 18px;
+      background: radial-gradient(circle at top left, rgba(60, 242, 200, 0.18), rgba(5, 8, 20, 0.96));
+      border: 1px solid rgba(60, 242, 200, 0.4);
+      padding: 12px 12px 11px;
+      box-shadow: 0 0 32px rgba(60, 242, 200, 0.35);
+    }
+
+    .hero-right-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .hero-right-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-main);
+    }
+
+    .hero-right-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-strong);
+    }
+
+    .hero-right-body {
+      font-size: 12px;
+      color: var(--text-main);
+    }
+
+    .hero-right-body span.muted {
+      color: var(--text-muted);
+    }
+
+    .hero-right-footer {
+      margin-top: 8px;
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .hero-right-footer span.private {
+      color: #ffb8c6;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .hero-right-footer span.scope {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .slide-note {
+      margin-top: 8px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .slide-note strong {
+      color: var(--accent-strong);
+      font-weight: 600;
+    }
+
+    .risk-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .risk-card {
+      border-radius: 14px;
+      background: rgba(5, 8, 20, 0.9);
+      border: 1px solid rgba(255, 92, 122, 0.5);
+      padding: 10px 10px 9px;
+    }
+
+    .risk-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #ffb8c6;
+      margin-bottom: 4px;
+    }
+
+    .risk-title {
+      font-size: 13px;
+      font-weight: 550;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .risk-text {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .stacked-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .stacked-item {
+      border-radius: 12px;
+      background: rgba(5, 8, 20, 0.9);
+      border: 1px solid rgba(154, 163, 199, 0.4);
+      padding: 7px 9px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .stacked-item strong {
+      color: var(--text-main);
+      font-weight: 550;
+    }
+
+    .slide-anchor {
+      position: absolute;
+      top: -80px;
+    }
+
+    @media (max-width: 900px) {
+      .slide-body {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .timeline {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .metric-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .risk-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-inner {
+        padding-inline: 16px;
+      }
+
+      .deck-shell {
+        padding-inline: 16px;
+      }
+
+      .slide {
+        padding-inline: 16px;
+      }
+
+      .slide-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .slide-body {
+        gap: 16px;
+      }
+
+      .timeline {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .metric-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .risk-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .slide-watermark {
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="nav">
+      <div class="nav-inner">
+        <div class="brand">
+          <div class="brand-mark">DX</div>
+          <div class="brand-text">
+            <div class="brand-title">DM‑XTech</div>
+            <div class="brand-subtitle">Distributor briefing deck</div>
+          </div>
+        </div>
+        <div class="nav-meta">
+          <div class="nav-pill nav-pill--danger">
+            <span class="dot"></span>
+            PRIVATE &amp; CONFIDENTIAL
+          </div>
+          <div class="nav-pill nav-pill--accent">
+            <span class="dot"></span>
+            FOR PROSPECTIVE DISTRIBUTORS ONLY
+          </div>
+          <div class="nav-pill">
+            <span class="dot"></span>
+            Version 1.0 &mdash; Working draft
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="deck-shell">
+
+        <!-- Slide 1: Hero / Context -->
+        <section class="slide" id="slide-1">
+          <div class="slide-index">Slide 01</div>
+          <div class="slide-watermark">DM‑X</div>
+          <div class="slide-header">
+            <div>
+              <div class="slide-kicker">Private distributor briefing</div>
+              <h1 class="hero-title">
+                Building a <span class="highlight">disciplined, OEM‑credible</span> distributor network for DM‑XTech
+              </h1>
+              <p class="hero-subtitle">
+                This briefing gives you a clear view of how DM‑XTech works with distributors: what we protect,
+                what we expect, and how we design margin‑stacked, climate‑relevant businesses that can stand in front
+                of governments, investors, and OEMs without overclaiming.
+              </p>
+              <div class="hero-badge-row">
+                <div class="hero-badge">
+                  <span class="dot"></span>
+                  No informal engagement &mdash; disciplined channels only
+                </div>
+                <div class="hero-badge">
+                  <span class="dot"></span>
+                  Evergreen, reputationally safe messaging
+                </div>
+              </div>
+              <div class="hero-meta-row">
+                <div class="hero-meta-card">
+                  <div class="hero-meta-label">Scope</div>
+                  <div class="hero-meta-value">
+                    Distributor model for <span class="em">aquaculture, geothermal &amp; AI‑linked</span> platforms
+                  </div>
+                </div>
+                <div class="hero-meta-card">
+                  <div class="hero-meta-label">Audience</div>
+                  <div class="hero-meta-value">
+                    Prospective distributors, strategic partners, and <span class="em">executive‑level decision makers</span>
+                  </div>
+                </div>
+                <div class="hero-meta-card">
+                  <div class="hero-meta-label">Positioning</div>
+                  <div class="hero-meta-value">
+                    <span class="em">Research‑driven, standards‑aligned</span> &mdash; not a hype product pitch
+                  </div>
+                </div>
+              </div>
+            </div>
+            <aside class="hero-right">
+              <div class="hero-right-header">
+                <div class="hero-right-title">Briefing status</div>
+                <div class="hero-right-tag">Internal framing</div>
+              </div>
+              <div class="hero-right-body">
+                This document is designed as a <span class="muted">long‑scroll slide deck</span> that can be shared
+                as a private link or exported to PDF. It mirrors the design system of the DM‑XTech distributor
+                recruitment page so that your experience from web to briefing is visually and structurally consistent.
+              </div>
+              <div class="hero-right-footer">
+                <span class="private">Do not forward outside agreed channels</span>
+                <span class="scope">Non‑binding, non‑marketing</span>
+              </div>
+            </aside>
+          </div>
+          <div class="slide-divider"></div>
+          <p class="slide-note">
+            <strong>Reading note:</strong> Treat this as a guided conversation backbone. You can walk a prospect through
+            it live, or let them read it asynchronously, knowing that every statement is designed to be conservative,
+            defensible, and compatible with OEM‑grade scrutiny.
+          </p>
+        </section>
+
+        <!-- Slide 2: DM-XTech positioning -->
+        <section class="slide slide--muted" id="slide-2">
+          <div class="slide-index">Slide 02</div>
+          <div class="slide-header">
+            <div>
+              <div class="slide-kicker">Who we are</div>
+              <h2 class="slide-title">DM‑XTech in one page: what we actually do</h2>
+            </div>
+            <div class="slide-tag">
+              Distributor context
+              <span class="badge">Clarity first</span>
+            </div>
+          </div>
+          <div class="slide-body">
+            <div>
+              <div class="slide-section-title">Core identity</div>
+              <p class="slide-lead">
+                DM‑XTech is a <strong>systems‑driven platform builder</strong>, not a single‑product vendor.
+              </p>
+              <p class="slide-text">
+                We architect modular, staged upgrades across aquaculture, geothermal, and AI‑linked infrastructure.
+                Our work focuses on transforming existing facilities into capital‑efficient platforms that can host
+                new revenue streams, climate‑impact reductions, and research‑grade collaborations with OEMs and
+                scientific partners.
+              </p>
+              <ul class="list">
+                <li class="list-item">
+                  <span class="list-item-bullet"></span>
+                  <span><strong>Modular, staged upgrades:</strong> we avoid big‑bang capex. We build in phases, aligned with
+                  operational learning and cash‑flow milestones.</span>
+                </li>
+                <li class="list-item">
+                  <span class="list-item-bullet"></span>
+                  <span><strong>Standards‑aligned:</strong> we design around aviation fuel standards, aquaculture best practice,
+                  and national regulatory frameworks, so that distributors can speak credibly to regulators and OEMs.</span>
+                </li>
+                <li class="list-item">
+                  <span class="list-item-bullet"></span>
+                  <span><strong>Research‑ready:</strong> we deliberately leave space for universities, labs, and OEMs to plug in
+                  research, rather than pretending we have all the answers.</span>
+                </li>
+              </ul>
+              <div class="callout callout--accent">
+                <strong>Distributor implication:</strong> you are not selling a gadget. You are curating access to a
+                disciplined, standards‑aware upgrade path that can be defended in front of serious stakeholders.
+              </div>
+            </div>
+            <div>
+              <div class="slide-section-title">What this means for you</div>
+              <p class="slide-text">
+                As a distributor, your credibility is tied to ours. We protect that by being explicit about what we
+                <strong>do</strong> and what we <strong>do not</strong> claim.
+              </p>
+              <div class="stacked-list">
+                <div class="stacked-item">
+                  <strong>We do:</strong> Provide structured, phased architectures, technical narratives, and
+                  implementation playbooks that you can localize without breaking alignment with our standards.
+                </div>
+                <div class="stacked-item">
+                  <strong>We do:</strong> Support you with executive‑grade documents for government, investors, and OEMs,
+                  so you are never improvising high‑stakes messaging.
+                </div>
+                <div class="stacked-item">
+                  <strong>We do not:</strong> Authorize informal pitches, speculative performance claims, or “shortcut”
+                  engagements that bypass our agreed channels.
+                </div>
+              </div>
+              <div class="badge-row">
+                <span class="badge badge--accent">OEM‑credible framing</span>
+                <span class="badge badge--accent">Government‑ready narratives</span>
+                <span class="badge">No hype, no shortcuts</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 3: Distributor role -->
+        <section class="slide" id="slide-3">
+          <div class="slide-index">Slide 03</div>
+          <div class="slide-header">
+            <div>
+              <div class="slide-kicker">Your role</div>
+              <h2 class="slide-title">What a DM‑XTech distributor actually does</h2>
+            </div>
+            <div class="slide-tag">
+              Role definition
+              <span class="badge">Non‑negotiables</span>
+            </div>
+          </div>
+          <div class="slide-body">
+            <div>
+              <div class="slide-section-title">Core responsibilities</div>
+              <p class="slide-lead">
+                A DM‑XTech distributor is a <strong>disciplined orchestrator</strong> of local opportunities, not a
+                loose reseller.
+              </p>
+              <ul class="list">
+                <li class="list-item">
+                  <span class="list-item-bullet"></span>
+                  <span><strong>Pipeline curation:</strong> identify and qualify facilities, partners, and projects that can
+                  host modular upgrades (aquaculture, geothermal, AI, aviation‑linked).</span>
+                </li>
+                <li class="list-item">
+                  <span class="list-item-bullet"></span>
+                  <span><strong>Stakeholder alignment:</strong> keep government, investors, and operators aligned with
+                  realistic timelines, staged capex, and research‑grade expectations.</span>
+                </li>
+                <li class="list-item">
+                  <span class="list-item-bullet"></span>
+                  <span><strong>Channel discipline:</strong> ensure all serious engagements flow through agreed DM‑XTech
+                  channels, with documented context and no side‑door promises.</span>
+                </li>
+              </ul>
+              <div class="pill-row">
+                <div class="pill pill--accent">
+                  <span class="bullet"></span>
+                  Curate, don’t chase everything
+                </div>
+                <div class="pill">
+                  <span class="bullet"></span>
+                  Protect DM‑XTech and your own reputation
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="slide-section-title">What success looks like</div>
+              <div class="metric-grid">
+                <div class="metric-card">
+                  <div class="metric-label">Pipeline quality</div>
+                  <div class="metric-value">High</div>
+                  <div class="metric-footnote">
+                    Fewer, better‑qualified opportunities with clear technical and regulatory context.
+                  </div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label">Channel discipline</div>
+                  <div class="metric-value">Strict</div>
+                  <div class="metric-footnote">
+                    No informal OEM outreach, no speculative claims, no off‑script documents.
+                  </div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label">Margin stacking</div>
+                  <div class="metric-value">Layered</div>
+                  <div class="metric-footnote">
+                    Multiple revenue layers across upgrades, services, and long‑term operations.
+                  </div>
+                </div>
+              </div>
+              <div class="callout">
+                <strong>Key idea:</strong> we would rather you walk away from a misaligned opportunity than
+                compromise the DM‑XTech brand or your own credibility.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 4: Guardrails & discipline -->
+        <section class="slide slide--alt" id="slide-4">
+          <div class="slide-index">Slide 04</div>
+          <div class="slide-header">
+            <div>
+              <div class="slide-kicker">Guardrails</div>
+              <h2 class="slide-title">Non‑negotiable guardrails that protect everyone</h2>
+            </div>
+            <div class="slide-tag">
+              Risk management
+              <span class="badge badge--danger">Critical</span>
+            </div>
+          </div>
+          <div class="slide-body">
+            <div>
+              <div class="slide-section-title">Why guardrails exist</div>
+              <p class="slide-text">
+                DM‑XTech operates in domains that intersect with aviation fuel standards, national energy policy,
+                aquaculture biosecurity, and AI infrastructure. A single informal claim can damage OEM relationships,
+                undermine government trust, or expose you to liability.
+              </p>
+              <div class="risk-grid">
+                <div class="risk-card">
+                  <div class="risk-label">Risk 01</div>
+                  <div class="risk-title">Informal OEM engagement</div>
+                  <div class="risk-text">
+                    Uncoordinated outreach to OEMs or regulators using non‑approved language can create conflicting
+                    narratives and reputational damage.
+                  </div>
+                </div>
+                <div class="risk-card">
+                  <div class="risk-label">Risk 02</div>
+                  <div class="risk-title">Overstated performance</div>
+                  <div class="risk-text">
+                    Claims that go beyond our documented, standards‑aligned framing can be challenged and may not be
+                    defensible in a technical review.
+                  </div>
+                </div>
+                <div class="risk-card">
+                  <div class="risk-label">Risk 03</div>
+                  <div class="risk-title">Unstructured pilots</div>
+                  <div class="risk-text">
+                    “Quick pilots” without proper design, monitoring, and documentation can waste time and weaken
+                    future research‑grade collaborations.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="slide-section-title">Guardrails in practice</div>
+              <ul class="list">
+                <li class="list-item">
+                  <span class="list-item-bullet"></span>
+                  <span><strong>Channel discipline:</strong> all OEM, regulator, and high‑level investor contact is
+                  coordinated with DM‑XTech. You do not freelance these conversations.</span>
+                </li>
+                <li class="list-item">
+                  <span class="list-item-bullet"></span>
+                  <span><strong>Document control:</strong> you use DM‑XTech‑approved decks, briefs, and one‑pagers.
+                  Localization is allowed, but not improvisation on core claims.</span>
+                </li>
+                <li class="list-item">
+                  <span class="list-item-bullet"></span>
+                  <span><strong>No medical or performance claims:</strong> we do not position our work as medical,
+                  therapeutic, or guaranteed performance improvements. We talk about architectures, pathways, and
+                  research‑grade opportunities.</span>
+                </li>
+              </ul>
+              <div class="callout callout--danger">
+                <strong>Bottom line:</strong> if you are ever unsure whether something is safe to say, write, or
+                promise, treat that as a signal to pause and route it back through DM‑XTech.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 5: Business model & margin stacking -->
+        <section class="slide" id="slide-5">
+          <div class="slide-index">Slide 05</div>
+          <div class="slide-header">
+            <div>
+              <div class="slide-kicker">Business model</div>
+              <h2 class="slide-title">How distributors actually make money with DM‑XTech</h2>
+            </div>
+            <div class="slide-tag">
+              Economics
+              <span class="badge badge--warm">Margin stacking</span>
+            </div>
+          </div>
+          <div class="slide-body">
+            <div>
+              <div class="slide-section-title">Margin‑stacked architecture</div>
+              <p class="slide-lead">
+                We design for <strong>layered revenue</strong>, not one‑off commissions.
+              </p>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Layer</th>
+                    <th>Distributor role</th>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="table-row-soft">
+                    <td>01 &mdash; Discovery &amp; framing</td>
+                    <td>Qualify sites, gather data, align expectations.</td>
+                    <td><span class="muted">Often retainer or pre‑development fee; filters serious partners.</span></td>
+                  </tr>
+                  <tr>
+                    <td>02 &mdash; Modular upgrades</td>
+                    <td>Coordinate staged implementation of aquaculture, geothermal, or AI modules.</td>
+                    <td><span class="muted">Margin on hardware, integration, and local services.</span></td>
+                  </tr>
+                  <tr class="table-row-soft">
+                    <td>03 &mdash; Operations &amp; monitoring</td>
+                    <td>Support operators with monitoring, optimization, and reporting.</td>
+                    <td><span class="muted">Recurring service revenue; potential data‑sharing value.</span></td>
+                  </tr>
+                  <tr>
+                    <td>04 &mdash; Research &amp; OEM pathways</td>
+                    <td>Host or facilitate research‑grade pilots and OEM‑linked work.</td>
+                    <td><span class="muted">Strategic upside; strengthens your position in the ecosystem.</span></td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="callout">
+                <strong>Key principle:</strong> we avoid models where you are forced to chase volume at thin margins.
+                Instead, we build depth and resilience into each relationship.
+              </div>
+            </div>
+            <div>
+              <div class="slide-section-title">Distributor economics in practice</div>
+              <ul class="list">
+                <li class="list-item">
+                  <span class="list-item-bullet"></span>
+                  <span><strong>Staged capex, staged revenue:</strong> as facilities move through phases, your revenue
+                  grows with each milestone rather than depending on a single “big win”.</span>
+                </li>
+                <li class="list-item">
+                  <span class="list-item-bullet"></span>
+                  <span><strong>Service‑heavy orientation:</strong> we deliberately design for services, monitoring,
+                  and support, which are harder to commoditize and easier to defend.</span>
+                </li>
+                <li class="list-item">
+                  <span class="list-item-bullet"></span>
+                  <span><strong>Strategic upside:</strong> distributors who maintain discipline and documentation are
+                  best positioned for future OEM or government‑backed programs.</span>
+                </li>
+              </ul>
+              <div class="badge-row">
+                <span class="badge badge--accent">Depth over volume</span>
+                <span class="badge badge--accent">Recurring services</span>
+                <span class="badge badge--warm">Strategic optionality</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 6: Engagement process -->
+        <section class="slide slide--muted" id="slide-6">
+          <div class="slide-index">Slide 06</div>
+          <div class="slide-header">
+            <div>
+              <div class="slide-kicker">Process</div>
+              <h2 class="slide-title">How we engage with distributors &amp; their pipelines</h2>
+            </div>
+            <div class="slide-tag">
+              Process map
+              <span class="badge">Stepwise</span>
+            </div>
+          </div>
+          <div class="slide-body">
+            <div>
+              <div class="slide-section-title">From first contact to structured pipeline</div>
+              <p class="slide-text">
+                We keep the engagement process simple, but disciplined. Each step is designed to protect your time,
+                our time, and the credibility of any external conversations.
+              </p>
+              <div class="timeline">
+                <div class="timeline-step">
+                  <div class="timeline-step-index">01</div>
+                  <div class="timeline-step-label">Initial alignment</div>
+                  <div class="timeline-step-title">Distributor briefing</div>
+                  <div class="timeline-step-text">
+                    We walk through this deck, clarify your context, and confirm that our guardrails and expectations
+                    are acceptable to you.
+                  </div>
+                </div>
+                <div class="timeline-step">
+                  <div class="timeline-step-index">02</div>
+                  <div class="timeline-step-label">Context capture</div>
+                  <div class="timeline-step-title">Local landscape scan</div>
+                  <div class="timeline-step-text">
+                    You map key facilities, regulators, and potential partners. We co‑design a realistic initial
+                    focus area.
+                  </div>
+                </div>
+                <div class="timeline-step">
+                  <div class="timeline-step-index">03</div>
+                  <div class="timeline-step-label">Pilot pipeline</div>
+                  <div class="timeline-step-title">Shortlist opportunities</div>
+                  <div class="timeline-step-text">
+                    Together we select a small number of high‑quality opportunities to develop into structured
+                    concept notes.
+                  </div>
+                </div>
+                <div class="timeline-step">
+                  <div class="timeline-step-index">04</div>
+                  <div class="timeline-step-label">Execution</div>
+                  <div class="timeline-step-title">Staged implementation</div>
+                  <div class="timeline-step-text">
+                    We move into phased design, contracting, and implementation, with clear documentation and
+                    monitoring.
+                  </div>
+                </div>
+              </div>
+              <div class="callout">
+                <strong>Important:</strong> we do not rush to “sign something” just to create the appearance of
+                progress. We prioritize clarity and defensibility over speed.
+              </div>
+            </div>
+            <div>
+              <div class="slide-section-title">Your responsibilities at each step</div>
+              <div class="stacked-list">
+                <div class="stacked-item">
+                  <strong>Before any external outreach:</strong> confirm that you are using the latest DM‑XTech
+                  language and documents, and that the opportunity is aligned with our focus areas.
+                </div>
+                <div class="stacked-item">
+                  <strong>During opportunity development:</strong> keep a written record of assumptions, constraints,
+                  and stakeholder expectations. This becomes part of the project’s defensible history.
+                </div>
+                <div class="stacked-item">
+                  <strong>During implementation:</strong> maintain discipline on reporting, monitoring, and change
+                  control. Surprises are the enemy of OEM‑grade trust.
+                </div>
+              </div>
+              <div class="badge-row">
+                <span class="badge badge--accent">Documented assumptions</span>
+                <span class="badge badge--accent">Version‑controlled language</span>
+                <span class="badge">No improvisation on claims</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 7: Messaging & compliance -->
+        <section class="slide slide--alt" id="slide-7">
+          <div class="slide-index">Slide 07</div>
+          <div class="slide-header">
+            <div>
+              <div class="slide-kicker">Messaging discipline</div>
+              <h2 class="slide-title">How to talk about DM‑XTech without overclaiming</h2>
+            </div>
+            <div class="slide-tag">
+              Communications
+              <span class="badge badge--danger">Strict</span>
+            </div>
+          </div>
+          <div class="slide-body">
+            <div>
+              <div class="slide-section-title">Approved framing themes</div>
+              <p class="slide-text">
+                We keep our language conservative, standards‑aware, and focused on architectures and pathways rather
+                than guaranteed outcomes.
+              </p>
+              <ul class="list">
+                <li class="list-item">
+                  <span class="list-item-bullet"></span>
+                  <span><strong>Architectures, not miracles:</strong> “We design modular upgrade pathways that can host
+                  research‑grade work” is acceptable. “We guarantee X% improvement” is not.</span>
+                </li>
+                <li class="list-item">
+                  <span class="list-item-bullet"></span>
+                  <span><strong>Standards‑aligned:</strong> you can say that we design with reference to relevant
+                  standards and regulatory frameworks, without implying certification or endorsement we do not have.</span>
+                </li>
+                <li class="list-item">
+                  <span class="list-item-bullet"></span>
+                  <span><strong>Climate‑impact aware:</strong> we talk about potential contributions to emissions
+                  reduction pathways, not “net‑zero guarantees”.</span>
+                </li>
+              </ul>
+              <div class="callout callout--accent">
+                <strong>Rule of thumb:</strong> if a sentence sounds like marketing hype, it probably does not belong
+                in a DM‑XTech conversation.
+              </div>
+            </div>
+            <div>
+              <div class="slide-section-title">What to avoid</div>
+              <ul class="list">
+                <li class="list-item">
+                  <span class="list-item-bullet"></span>
+                  <span><strong>Medical or therapeutic claims:</strong> we do not position any DM‑XTech work as a
+                  medical treatment, cure, or health guarantee.</span>
+                </li>
+                <li class="list-item">
+                  <span class="list-item-bullet"></span>
+                  <span><strong>Unverified performance numbers:</strong> do not quote efficiency, yield, or emissions
+                  numbers unless they are explicitly provided in DM‑XTech documentation for that context.</span>
+                </li>
+                <li class="list-item">
+                  <span class="list-item-bullet"></span>
+                  <span><strong>Implied endorsements:</strong> avoid language that suggests OEMs, regulators, or
+                  governments have endorsed something unless we have written proof and explicit permission to say so.</span>
+                </li>
+              </ul>
+              <div class="badge-row">
+                <span class="badge badge--danger">No medical claims</span>
+                <span class="badge badge--danger">No speculative numbers</span>
+                <span class="badge">No implied endorsements</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 8: Support, tools, and materials -->
+        <section class="slide slide--muted" id="slide-8">
+          <div class="slide-index">Slide 08</div>
+          <div class="slide-header">
+            <div>
+              <div class="slide-kicker">Support</div>
+              <h2 class="slide-title">What DM‑XTech provides to disciplined distributors</h2>
+            </div>
+            <div class="slide-tag">
+              Enablement
+              <span class="badge badge--accent">Structured</span>
+            </div>
+          </div>
+          <div class="slide-body">
+            <div>
+              <div class="slide-section-title">Core enablement assets</div>
+              <ul class="list">
+                <li class="list-item">
+                  <span class="list-item-bullet"></span>
+                  <span><strong>Executive‑grade decks &amp; briefs:</strong> curated for government, investors, OEMs,
+                  and operators, with conservative, defensible language.</span>
+                </li>
+                <li class="list-item">
+                  <span class="list-item-bullet"></span>
+                  <span><strong>Technical notes &amp; narratives:</strong> documents that translate complex requirements
+                  into locally relevant, action‑oriented framing.</span>
+                </li>
+                <li class="list-item">
+                  <span class="list-item-bullet"></span>
+                  <span><strong>Process templates:</strong> checklists, intake forms, and opportunity‑scoping templates
+                  that keep your pipeline structured.</span>
+                </li>
+              </ul>
+              <div class="pill-row">
+                <div class="pill pill--accent">
+                  <span class="bullet"></span>
+                  Ready‑to‑use, not DIY
+                </div>
+                <div class="pill">
+                  <span class="bullet"></span>
+                  Version‑controlled language
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="slide-section-title">How we work with you day‑to‑day</div>
+              <div class="stacked-list">
+                <div class="stacked-item">
+                  <strong>Structured check‑ins:</strong> regular, agenda‑driven calls focused on pipeline quality,
+                  document updates, and risk review &mdash; not generic “catch‑ups”.
+                </div>
+                <div class="stacked-item">
+                  <strong>Feedback loops:</strong> we refine documents and processes based on real‑world feedback from
+                  your market, while keeping global consistency.
+                </div>
+                <div class="stacked-item">
+                  <strong>Escalation paths:</strong> clear routes for raising complex technical, regulatory, or
+                  reputational questions before they become problems.
+                </div>
+              </div>
+              <div class="badge-row">
+                <span class="badge badge--accent">Agenda‑driven calls</span>
+                <span class="badge">Feedback‑driven iteration</span>
+                <span class="badge">Clear escalation paths</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 9: Fit check & expectations -->
+        <section class="slide" id="slide-9">
+          <div class="slide-index">Slide 09</div>
+          <div class="slide-header">
+            <div>
+              <div class="slide-kicker">Fit check</div>
+              <h2 class="slide-title">Is the DM‑XTech distributor model right for you?</h2>
+            </div>
+            <div class="slide-tag">
+              Alignment
+              <span class="badge">Honest filter</span>
+            </div>
+          </div>
+          <div class="slide-body">
+            <div>
+              <div class="slide-section-title">Signals of a strong fit</div>
+              <ul class="list">
+                <li class="list-item">
+                  <span class="list-item-bullet"></span>
+                  <span><strong>You value discipline over hype:</strong> you are comfortable saying “I don’t know yet”
+                  and routing questions back through structured channels.</span>
+                </li>
+                <li class="list-item">
+                  <span class="list-item-bullet"></span>
+                  <span><strong>You can operate at executive level:</strong> you are used to speaking with government,
+                  investors, and operators in a measured, standards‑aware way.</span>
+                </li>
+                <li class="list-item">
+                  <span class="list-item-bullet"></span>
+                  <span><strong>You think in systems:</strong> you see how aquaculture, energy, AI, and climate
+                  narratives connect, and you are willing to learn where you are not yet fluent.</span>
+                </li>
+              </ul>
+              <div class="callout callout--accent">
+                <strong>Positive filter:</strong> if this sounds like you, the DM‑XTech model can amplify your strengths
+                rather than forcing you into a volume‑driven sales posture.
+              </div>
+            </div>
+            <div>
+              <div class="slide-section-title">Signals it may not be a fit</div>
+              <ul class="list">
+                <li class="list-item">
+                  <span class="list-item-bullet"></span>
+                  <span><strong>You want fast, informal deals:</strong> if your instinct is to “just talk to everyone”
+                  and see what sticks, our guardrails will feel restrictive.</span>
+                </li>
+                <li class="list-item">
+                  <span class="list-item-bullet"></span>
+                  <span><strong>You dislike documentation:</strong> if you see documentation and process as bureaucracy
+                  rather than protection, this model will be frustrating.</span>
+                </li>
+                <li class="list-item">
+                  <span class="list-item-bullet"></span>
+                  <span><strong>You want to white‑label everything:</strong> DM‑XTech is not a silent backend brand.
+                  We protect our name because it protects you.</span>
+                </li>
+              </ul>
+              <div class="badge-row">
+                <span class="badge badge--danger">No “spray and pray”</span>
+                <span class="badge">No shortcut culture</span>
+                <span class="badge">No white‑label dilution</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 10: Next steps & call to action -->
+        <section class="slide slide--muted" id="slide-10">
+          <div class="slide-index">Slide 10</div>
+          <div class="slide-header">
+            <div>
+              <div class="slide-kicker">Next steps</div>
+              <h2 class="slide-title">If this resonates, here is how we proceed</h2>
+            </div>
+            <div class="slide-tag">
+              Call to action
+              <span class="badge badge--accent">Structured</span>
+            </div>
+          </div>
+          <div class="slide-body slide-body--single">
+            <div class="slide-section-title">From interest to structured collaboration</div>
+            <p class="slide-text">
+              We treat your time and ours as scarce. The goal of this briefing is not to “close you” but to give you
+              enough clarity to decide whether a disciplined, standards‑aligned distributor relationship with DM‑XTech
+              is worth exploring further.
+            </p>
+            <div class="stacked-list">
+              <div class="stacked-item">
+                <strong>Step 1 &mdash; Reflection:</strong> you review this deck, consider your current portfolio,
+                and decide whether our guardrails and expectations align with how you want to operate.
+              </div>
+              <div class="stacked-item">
+                <strong>Step 2 &mdash; Context note:</strong> if you wish to proceed, we ask for a short written note
+                outlining your geography, sectors of focus, and any existing relationships that might intersect with
+                DM‑XTech work.
+              </div>
+              <div class="stacked-item">
+                <strong>Step 3 &mdash; Structured call:</strong> we schedule a focused call to walk through your
+                context note, identify potential first opportunities, and agree on a low‑risk starting scope.
+              </div>
+            </div>
+            <div class="cta-row">
+              <div class="btn btn-primary">
+                <span class="dot"></span>
+                Confirm interest &amp; share context
+              </div>
+              <div class="btn btn-outline">
+                <span class="dot"></span>
+                Request example documents
+              </div>
+              <div class="btn btn-ghost">
+                <span class="dot"></span>
+                Decline &mdash; not the right fit
+              </div>
+            </div>
+            <p class="slide-note">
+              <strong>Final thought:</strong> whether or not we work together, we want you to walk away with a clearer
+              sense of what disciplined, standards‑aligned climate and infrastructure work can look like in practice.
+            </p>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div>
+        <span class="label">DM‑XTech &mdash; Private distributor briefing deck</span>
+      </div>
+      <div>
+        <span class="label private">Private &amp; confidential &mdash; Do not circulate without written consent</span>
+      </div>
+    </footer>
+  </div>
+</body>
 </html>
